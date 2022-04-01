@@ -1,0 +1,25 @@
+spring:
+  datasource: jdbc:h2:file:./data/songs;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE;
+  driverClassName: org.h2.Driver
+  username: sa
+  password: password
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  mvc:
+    format:
+      date: dd-MM-yyyy
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
