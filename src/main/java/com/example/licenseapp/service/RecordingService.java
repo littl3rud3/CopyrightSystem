@@ -1,65 +1,65 @@
 package com.example.licenseapp.service;
 
-import com.example.licenseapp.dto.RecordingDTO;
-
 import java.util.List;
 
+import com.example.licenseapp.dto.RecordingDTO;
+
 /**
- * Сервис для работы с композициями.
+ * A service for working with compositions.
  *
- * Реализация через Criteria API
+ * Implementation via Criteria API
  */
 public interface RecordingService {
 
     /**
-     * Получить все композиции.
+     * Get all compositions.
      *
-     * @return список композиций
+     * @return List of records
      */
     List<RecordingDTO> getAll();
 
     /**
-     * Получить композицию по идентификатору.
+     * Get the composition by ID.
      *
-     * @param recordId идентификатор композиций
-     * @return Композиция
+     * @param recordId record identifier
+     * @return Record
      */
     RecordingDTO getById(long recordId);
 
     /**
-     * Добавить новую композицию.
+     * Add new record.
      *
-     * @param newRecording новая композиция
+     * @param newRecording New record
      */
     void create(RecordingDTO newRecording);
 
     /**
-     * Обновить информацию о композиции.
+     * Update record info.
      *
-     * @param updatedRecord композиция с обновлёнными данными
-     * @return композиция с обновлёнными данными
+     * @param updatedRecord record with updated data
+     * @return record with updated data
      */
     RecordingDTO update(RecordingDTO updatedRecord);
 
     /**
-     * Удалить композицию по идентификатору.
+     * Delete record by ID.
      *
-     * @param recordId идентификатор композиции
+     * @param recordId record identifier
      */
     void delete(long recordId);
 
     /**
-     * Удалить исполнителя композиции по идентификатору композиции.
+     * Delete the artist of the composition by the record ID.
      *
-     * @param recordId идентификатор композиции
+     * @param recordId record identifier
      */
     void removeSinger(long recordId);
 
     /**
-     * Получить стоимость лицензии на композицию.
+     * Get the cost of the license for the record.
      *
-     * @param recordId идентификатор композиции
-     * @return Список цен
+     * @param recordId record identifier
+     * @return List of prices
      */
     List<Long> getPriceForRecording(Long recordId);
 }

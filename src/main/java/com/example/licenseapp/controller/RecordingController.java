@@ -1,5 +1,7 @@
 package com.example.licenseapp.controller;
 
+import java.util.List;
+
 import com.example.licenseapp.dto.RecordingDTO;
 import com.example.licenseapp.service.RecordingService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -14,55 +16,53 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/api/recordings")
 @RequiredArgsConstructor
-@Tag(name = "Контроллер композиций")
+@RequestMapping("/api/recordings")
+@Tag(name = "Record Controller")
 public class RecordingController {
-
+    
     private final RecordingService recordingService;
-
-    @Operation(summary = "Все композиции")
+    
     @GetMapping
+    @Operation(summary = "All records")
     public List<RecordingDTO> getAll() {
-
+        
         return recordingService.getAll();
     }
-
-    @Operation(summary = "Композиция по идентификатору")
+    
     @GetMapping("/{id:[\\d]+}")
+    @Operation(summary = "Record by ID")
     public RecordingDTO get(@PathVariable long id) {
-
+        
         return recordingService.getById(id);
     }
-
-    @Operation(summary = "Добавить композицию")
+    
     @PostMapping
+    @Operation(summary = "Add record")
     public void create(@RequestBody RecordingDTO request) {
-
+        
         recordingService.create(request);
     }
-
-    @Operation(summary = "Удалить композицию по идентификатору")
+    
     @DeleteMapping("/{id:[\\d]+}")
+    @Operation(summary = "Delete record")
     public void delete(@PathVariable long id) {
-
+        
         recordingService.delete(id);
     }
-
-    @Operation(summary = "Удалить исполнителя песни")
+    
     @PutMapping("/removeSinger/{id}")
+    @Operation(summary = "Delete a song artist")
     public void removeSinger(@PathVariable long id) {
-
+        
         recordingService.removeSinger(id);
     }
-
-    @Operation(summary = "Редактировать композицию")
+    
     @PutMapping
+    @Operation(summary = "Edit record")
     public void update(@RequestBody RecordingDTO updatedRecording) {
-
+        
         recordingService.update(updatedRecording);
     }
 }

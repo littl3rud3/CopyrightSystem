@@ -17,37 +17,37 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 @RequiredArgsConstructor
 public class SecurityServiceImpl implements SecurityService {
-
+    
     private final ClientRepository clientRepository;
-
+    
     private final ClientMapper clientMapper;
-
+    
     @Lazy
     @Autowired
     private PasswordEncoder passwordEncoder;
-
+    
     @Override
     @Transactional
     public ClientDTO register(ClientDTO clientDTO) {
-
+        
         Client userToRegister = clientMapper.toEntity(clientDTO);
         userToRegister.setPassword(passwordEncoder.encode(userToRegister.getPassword()));
-
+        
         clientRepository.insert(userToRegister);
-
+        
         return clientDTO;
     }
-
+    
     @Override
     public void changePassword(String login, String oldPassword, String newPassword) {
-
+        
         Client user = clientRepository.getByLogin(login);
-
+        
         String encodedPassword = passwordEncoder.encode(oldPassword);
         if (!encodedPassword.equals(oldPassword)) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Неправильный пароль");
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Incorrect password");
         }
-
+        
         user.setPassword(passwordEncoder.encode(newPassword));
         clientRepository.save(user);
     }

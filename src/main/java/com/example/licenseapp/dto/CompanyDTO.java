@@ -1,16 +1,16 @@
 package com.example.licenseapp.dto;
 
+import java.util.List;
+
 import com.example.licenseapp.model.Copyright;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.util.List;
-
-@Schema(description = "Компания")
+@Schema(description = "Company")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public record CompanyDTO(@Schema(description = "Идентификатор компании") Long id,
-                         @Schema(description = "Название компании") String name,
+public record CompanyDTO(@Schema(description = "ID") Long id,
+                         @Schema(description = "name") String name,
                          @JsonIgnoreProperties(value = {"company"})
-                         @Schema(description = "Авторские права") List<Copyright> copyrights) {
-
+                         @Schema(description = "Copyrights") List<Copyright> copyrights) {
+    
 }

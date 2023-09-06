@@ -1,21 +1,21 @@
 package com.example.licenseapp.dto;
 
+import java.time.ZonedDateTime;
+import java.util.List;
+
 import com.example.licenseapp.model.Copyright;
 import com.example.licenseapp.model.Singer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.time.ZonedDateTime;
-import java.util.List;
-
-@Schema(description = "Песня")
+@Schema(description = "Song")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public record RecordingDTO(@Schema(description = "Идентификатор песни") Long id,
-                           @Schema(description = "Название песни") String title,
-                           @Schema(description = "Версия") String version,
-                           @Schema(description = "Дата и время релиза песни") ZonedDateTime releaseTime,
-                           @Schema(description = "Исполнитель песни") Singer singer,
+public record RecordingDTO(@Schema(description = "ID") Long id,
+                           @Schema(description = "Title") String title,
+                           @Schema(description = "Version") String version,
+                           @Schema(description = "Date and time of the song's release") ZonedDateTime releaseTime,
+                           @Schema(description = "The artist of the song") Singer singer,
                            @JsonIgnoreProperties(value = {"recordings"})
-                           @Schema(description = "Авторские права") List<Copyright> copyrights) {
-
+                           @Schema(description = "Copyrights") List<Copyright> copyrights) {
+    
 }

@@ -1,51 +1,54 @@
 package com.example.licenseapp.service;
 
-import com.example.licenseapp.dto.CompanyDTO;
-
 import java.util.List;
 
+import com.example.licenseapp.dto.CompanyDTO;
+
 /**
- * Сервис для взаимодействия с компаниями.
+ * A service for interacting with companies.
  *
- * Реализация через HQL
+ * Implementation via HQL
  */
 public interface CompanyService {
-
+    
     /**
-     * Получить все компании.
+     * Get all companies.
      *
-     * @return список компаний
+     * @return list of companies
      */
     List<CompanyDTO> getAll();
-
+    
     /**
-     * Получить компанию по идентификатору.
+     * Get a company by ID.
      *
-     * @param companyId идентификатор компании
-     * @return Компания
+     * @param companyId company ID
+     *
+     * @return Company
      */
     CompanyDTO getById(long companyId);
-
+    
     /**
-     * Сохранить новую компанию.
+     * Save new company.
      *
-     * @param newCompany новая комппания
-     * @return сохранённая компания
+     * @param newCompany new company
+     *
+     * @return Saved company
      */
     CompanyDTO create(CompanyDTO newCompany);
-
+    
     /**
-     * Обновить информацию о компании.
+     * Update company info.
      *
-     * @param updatedCompany новая информация о компании
-     * @return Обновлённая сущность компании
+     * @param updatedCompany new information about the company
+     *
+     * @return The updated essence of the company
      */
     CompanyDTO update(CompanyDTO updatedCompany);
-
+    
     /**
-     * Удалить сохранённую компанию.
+     * Delete a saved company.
      *
-     * @param companyId Идентификатор компании
+     * @param companyId Company ID
      */
     void delete(long companyId);
 }

@@ -1,49 +1,49 @@
 package com.example.licenseapp.service;
 
-import com.example.licenseapp.dto.SingerDTO;
-
 import java.util.List;
 
+import com.example.licenseapp.dto.SingerDTO;
+
 /**
- * Сервис для работы с исполнителями.
+ * Service for working with singers.
  *
- * SessionFactory
+ * Implementation via Hibernate
  */
 public interface SingerService {
 
     /**
-     * Получить всех исполнителей.
+     * Get all singers.
      *
-     * @return Список исполнителей
+     * @return List of singers
      */
     List<SingerDTO> getAll();
 
     /**
-     * Получить исполнителя по идентификатору.
+     * Get singer by identifier.
      *
-     * @param singerId идентификатор исполнителя
-     * @return Исполнитель
+     * @param singerId singer identifier
+     * @return Singer
      */
     SingerDTO getById(long singerId);
 
     /**
-     * Добавить нового исполнителя.
+     * Add new singer.
      *
-     * @param newSinger новый исполнитель
+     * @param newSinger new singer
      */
     void create(SingerDTO newSinger);
 
     /**
-     * Обновить информацию об исполнителе.
+     * Update singer info.
      *
-     * @param updatedSinger Исполнитель с обновлёнными данными
+     * @param updatedSinger Updated singer
      */
     void update(SingerDTO updatedSinger);
 
     /**
-     * Удалить исполнителя по идентификатору.
+     * Delete singer by identifier.
      *
-     * @param singerId Идентификатор исполнителя
+     * @param singerId singer identifier
      */
     void delete(long singerId);
 }

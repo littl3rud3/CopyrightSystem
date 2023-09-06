@@ -1,73 +1,79 @@
 package com.example.licenseapp.service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import com.example.licenseapp.dto.CopyrightDTO;
 import com.example.licenseapp.model.Copyright;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.time.LocalDate;
-import java.util.List;
-
 /**
- * Сервис взаимодействия с авторскими правами.
+ * The service of interaction with copyrights.
  * <p>
- * Реализация через JpaRepository
+ * Implementation via JPA
  */
 public interface CopyrightService {
-
+    
     /**
-     * Получить все авторские права.
+     * Get all copyrights.
      *
-     * @param pageable параметры пагинации
-     * @return Список авторских прав
+     * @param pageable pagination parameters
+     *
+     * @return List of copyrights
      */
     Page<Copyright> getAll(Pageable pageable);
-
+    
     /**
-     * Получить авторское право по идентификатору.
+     * Get copyright by ID.
      *
-     * @param copyrightId идентификатор авторского права
-     * @return Авторское право
+     * @param copyrightId copyright identifier
+     *
+     * @return Copyright
      */
     CopyrightDTO getById(long copyrightId);
-
+    
     /**
-     * Добавить новое авторское право.
+     * Add a new copyright.
      *
-     * @param newCopyright новое авторское право
-     * @return Созданное авторское право
+     * @param newCopyright new copyright
+     *
+     * @return Created Copyright
      */
     CopyrightDTO create(CopyrightDTO newCopyright);
-
+    
     /**
-     * Обновить информацию об авторском праве.
+     * Update copyright information.
      *
-     * @param updatedCopyright обновлённое авторское право
-     * @return Обновлённое авторское право
+     * @param updatedCopyright updated copyright
+     *
+     * @return Updated Copyright
      */
     CopyrightDTO update(CopyrightDTO updatedCopyright);
-
+    
     /**
-     * Удалить авторское право по идентификатору.
+     * Delete copyright by ID.
      *
-     * @param copyrightId идентификатор авторского права
+     * @param copyrightId copyright identifier
      */
     void delete(long copyrightId);
-
+    
     /**
-     * Получить авторские права со сроком окончания действия между датами.
+     * Get copyrights with expiration dates between dates.
      *
-     * @param from левая граница дат
-     * @param to   правая граница дат
-     * @return Список авторских прав
+     * @param from from what date
+     * @param to   until what date
+     *
+     * @return List of copyrights
      */
     List<CopyrightDTO> copyrightsByDates(LocalDate from, LocalDate to);
-
+    
     /**
-     * Получить авторские права компании.
+     * Get the copyright of the company.
      *
-     * @param companyName название компании
-     * @return Список авторских прав
+     * @param companyName company name
+     *
+     * @return List of copyrights
      */
     List<CopyrightDTO> copyrightByCompanyName(String companyName);
 }
