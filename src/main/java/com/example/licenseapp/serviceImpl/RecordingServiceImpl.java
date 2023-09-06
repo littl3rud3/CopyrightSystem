@@ -30,11 +30,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-/**
- * Сервис для работы с композициями.
- *
- * Реализация через Criteria API
- */
 @Service
 @RequiredArgsConstructor
 @Log4j2
